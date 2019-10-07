@@ -1,14 +1,13 @@
+
 <!doctype html>
 <html lang="en">
-
   <head>
-    {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>Rahul Yadav</title>
+    <title>{{ blog.title }}</title>
 
 
     <!-- Bootstrap core CSS -->
@@ -36,6 +35,7 @@
   </head>
   <body>
     <header>
+        {% load staticfiles %}
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="{% url 'home' %}">Rahul</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,51 +45,30 @@
     <div class="navbar-nav ml-auto">
       <a class="nav-item nav-link " href="http://twitter.com/">Twitter</a>
       <a class="nav-item nav-link" href="{% static 'Resume - Python.docx' %}">Resume</a>
-      <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+      <a class="nav-item nav-link active"  href="{% url 'allblogs' %}">Blog</a>
 
     </div>
   </div>
 </nav>
+
 </header>
 
 <main role="main">
 
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1 class="jumbotron-heading">Hi, I'am Rahul.</h1>
-      <p class="lead text-muted">Hey, my name is Rahul Yadav and I am a software developer.</p>
-      <p>
-        <a href="mailto:imrsy292@gmail.com" class="btn btn-primary my-2">Email me</a>
+  <div class="container">
 
-      </p>
 
-      <img src="{% static 'Rahul_img.jpg' %}" height="300"/>
+      <h1 class="text-center pt-3">{{ blog.title }}</h1>
 
-    </div>
-  </section>
+      <p class="text-center"> {{ blog.pub_date }}</p>
 
-  <div class="album py-5 bg-light">
-    <div class="container">
+      <img class="img-fluid" src="{{ blog.image.url }}" />
+      <br />
+      <br />
 
-      <div class="row">
+      <p>{{ blog.body }}</p>
 
-        {% for job in jobs.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="{{ job.image.url }}"/>
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
-
-            </div>
-          </div>
-        </div>
-
-        {% endfor %}
-
-      </div>
-    </div>
-  </div>
-
+   </div>
 </main>
 
 <footer class="text-muted">
